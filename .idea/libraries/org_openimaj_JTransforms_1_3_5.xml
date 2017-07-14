@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="org.openimaj:JTransforms:1.3.5" type="repository">
+    <properties maven-id="org.openimaj:JTransforms:1.3.5" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/JTransforms-1.3.5.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
