@@ -1,9 +1,5 @@
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.UnsupportedAudioFileException;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.IOException;
+ import javax.sound.sampled.UnsupportedAudioFileException;
+import java.io.*;
 import java.nio.ByteBuffer;
 
 public class DoubleByteConverter {
@@ -30,7 +26,6 @@ public class DoubleByteConverter {
             } else {
                 prevDataNan = false;
             }
-
         }
 
         if (Double.isNaN(doubleArray[doubleArray.length - 1])) {
@@ -41,14 +36,16 @@ public class DoubleByteConverter {
     }
 
     public static byte[] fileToByteArray(File file) throws IOException, UnsupportedAudioFileException {
-        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(file);
-        byte[] bytes = new byte[(int) (audioInputStream.getFrameLength()) * (audioInputStream.getFormat().getFrameSize())];
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        BufferedInputStream in = new BufferedInputStream(new FileInputStream(file));
 
-        ByteArrayOutputStream baout = new ByteArrayOutputStream();
+        byte[] bytes = new byte[1024];
         int c;
-        while ((c = audioInputStream.read(bytes, 0, bytes.length)) != -1) {
-            baout.write(bytes, 0, c);
+        while ((c = in.read(bytes)) > 0) {
+            out.write(bytes, 0, c);
         }
-        return bytes;
+        out.flush();
+
+        return out.toByteArray();
     }
 }
