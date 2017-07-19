@@ -13,14 +13,14 @@ public class PlayFFT {
     private File audioFile;
     private int numOfSamples = FileFFT.getNumOfSamples();
 
-    public PlayFFT(File audioFile, File fftFile) throws IOException, UnsupportedAudioFileException {
+    public PlayFFT(File audioFile, File fftFile) throws IOException, UnsupportedAudioFileException, InterruptedException {
         this.audioFile = audioFile;
         this.fftFile = fftFile;
 
         play();
     }
 
-    private void play() throws IOException, UnsupportedAudioFileException {
+    private void play() throws IOException, UnsupportedAudioFileException, InterruptedException {
         byte[] byteData = DoubleByteConverter.fileToByteArray(audioFile);
         byte[] slicedData = new byte[numOfSamples * 8];
 
@@ -32,8 +32,6 @@ public class PlayFFT {
         int comma;
         int counter = 0;
         while ((line = bufferedReader.readLine()) != null) {
-//        line = bufferedReader.readLine();
-//        for (int j = 0; j < 1; j++) {
             bandOne = Double.parseDouble(line.substring(line.indexOf("[") + 1, (comma = line.indexOf(","))));
             bandTwo = Double.parseDouble(line.substring(comma + 1, (comma = line.indexOf(",", comma + 1))));
             bandThree = Double.parseDouble(line.substring(comma + 1, line.indexOf("]")));
@@ -43,9 +41,9 @@ public class PlayFFT {
             }
             audioStream = new AudioDataStream(new AudioData(slicedData));
             AudioPlayer.player.start(audioStream);
-            AudioPlayer.player.interrupt();
+            AudioPlayer.player.join();
 
-//            counter++;
+            counter++;
         }
 
     }
