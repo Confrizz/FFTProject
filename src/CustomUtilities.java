@@ -2,7 +2,17 @@
 import java.io.*;
 import java.nio.ByteBuffer;
 
-public class DoubleByteConverter {
+ public class CustomUtilities {
+
+     public static int getNextRealNumber(double[] data, int start) {
+         int position = start;
+
+         while (Double.isNaN(data[position])) {
+             position++;
+         }
+
+         return position;
+     }
 
     public static byte[] toByteArray(double[] doubleArray) {
         byte[] byteArray = new byte[doubleArray.length * 8];
@@ -28,6 +38,7 @@ public class DoubleByteConverter {
             }
         }
 
+        //TODO Add NaN cycler here to fix multiple NaN problem
         if (Double.isNaN(doubleArray[doubleArray.length - 1])) {
             doubleArray[doubleArray.length - 1] = doubleArray[doubleArray.length - 2];
         }

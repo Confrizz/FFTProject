@@ -17,7 +17,7 @@ public class FileFFT {
     }
 
     private void init() throws IOException, UnsupportedAudioFileException {
-        this.data = DoubleByteConverter.toDoubleArray(DoubleByteConverter.fileToByteArray(file));
+        this.data = CustomUtilities.toDoubleArray(CustomUtilities.fileToByteArray(file));
     }
 
     private void calculateFFT() throws IOException {
@@ -29,12 +29,20 @@ public class FileFFT {
 
         for (int k = 0; k < data.length / numOfSamples; k++) {
             for (int i = 0; i < numOfSamples; i++) {
-                fftData[2 * i] = (this.data[i + k * numOfSamples] * 0.5 * (1.0 - Math.cos(2.0 * Math.PI * i / numOfSamples))) / Math.pow(10, 300); //Hann Window
+                int j = i;
+                fftData[2 * i] = (this.data[i + k * numOfSamples]) * 0.5 * (1.0 - Math.cos(2.0 * Math.PI * j / numOfSamples)) / Math.pow(10, 300); //Hann Window  * 0.5 * (1.0 - Math.cos(2.0 * Math.PI * j / numOfSamples))
                 fftData[2 * i + 1] = 0;
             }
 
-            fft.complexForward(fftData);
+            int zeroCount = 0;
+            for (int i = numOfSamples * k; i < numOfSamples * (k + 1); i++) {
+                if (data[i] == 0) {
+                    zeroCount++;
+                }
+            }
+            System.out.println(zeroCount);
 
+            fft.complexForward(fftData);
             for (int i = 0; i < frequencyBands.length; i++) {
                 for (int j = 0; j < fftData.length; j += fftData.length / frequencyBands.length * i + 2) {
                     frequencyBands[i] += Math.sqrt(fftData[j] * fftData[j] + fftData[j + 1] * fftData[j + 1]) / 3;
@@ -44,6 +52,7 @@ public class FileFFT {
             outputStream.newLine();
             outputStream.flush();
         }
+        outputStream.close();
     }
 
     public static int getNumOfSamples() {

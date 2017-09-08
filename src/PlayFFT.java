@@ -1,4 +1,7 @@
-import javax.sound.sampled.*;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -18,7 +21,7 @@ public class PlayFFT implements Runnable{
 
     private void play() throws IOException, UnsupportedAudioFileException, InterruptedException, LineUnavailableException {
         BufferedReader bufferedReader = new BufferedReader(new FileReader(fftFile));
-        int dataLength = DoubleByteConverter.fileToByteArray(audioFile).length;
+        int dataLength = CustomUtilities.fileToByteArray(audioFile).length;
 
         String line;
         double bandOne, bandTwo, bandThree;
@@ -32,7 +35,7 @@ public class PlayFFT implements Runnable{
             bandTwo = Double.parseDouble(line.substring(comma + 1, (comma = line.indexOf(",", comma + 1))));
             bandThree = Double.parseDouble(line.substring(comma + 1, line.indexOf("]")));
 
-            System.out.println(bandOne + " " + bandTwo + " " + bandThree);
+//            System.out.println(bandOne + " " + bandTwo + " " + bandThree);
             Thread.sleep(8 * numOfSamples * numOfSamples / dataLength);
 
             counter++;
