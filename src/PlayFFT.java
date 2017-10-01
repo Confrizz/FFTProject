@@ -21,7 +21,7 @@ public class PlayFFT implements Runnable{
 
     private void play() throws IOException, UnsupportedAudioFileException, InterruptedException, LineUnavailableException {
         BufferedReader bufferedReader = new BufferedReader(new FileReader(fftFile));
-        int dataLength = CustomUtilities.fileToByteArray(audioFile).length;
+        int dataLength = Util.fileToByteArray(audioFile).length;
 
         String line;
         double bandOne, bandTwo, bandThree;

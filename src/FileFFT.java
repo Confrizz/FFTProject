@@ -17,7 +17,7 @@ public class FileFFT {
     }
 
     private void init() throws IOException, UnsupportedAudioFileException {
-        this.data = CustomUtilities.toDoubleArray(CustomUtilities.fileToByteArray(file));
+        this.data = Util.toDoubleArray(Util.fileToByteArray(file));
     }
 
     private void calculateFFT() throws IOException {
