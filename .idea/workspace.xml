@@ -4,16 +4,11 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a5980188-1b25-4599-b1a0-1f3ff01c51cb" name="Default" comment="Removed some debug statements">
+    <list default="true" id="a5980188-1b25-4599-b1a0-1f3ff01c51cb" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/FFT/FileFFT.class" afterPath="$PROJECT_DIR$/out/production/FFT/FileFFT.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/FFT/Main.class" afterPath="$PROJECT_DIR$/out/production/FFT/Main.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/FFT/PlayFFT.class" afterPath="$PROJECT_DIR$/out/production/FFT/PlayFFT.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FreqBands.txt" afterPath="$PROJECT_DIR$/FreqBands.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FileFFT.java" afterPath="$PROJECT_DIR$/src/FileFFT.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main.java" afterPath="$PROJECT_DIR$/src/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PlayFFT.java" afterPath="$PROJECT_DIR$/src/PlayFFT.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Util.java" afterPath="$PROJECT_DIR$/src/Util.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,8 +29,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+            <state relative-caret-position="340">
+              <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -472,7 +467,14 @@
       <option name="project" value="LOCAL" />
       <updated>1506870970238</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Fixed stereo file problem">
+      <created>1506900496054</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1506900496054</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TodoView">
@@ -556,7 +558,8 @@
     <MESSAGE value="Merge" />
     <MESSAGE value="Added getNextRealNumberIndex method in Util. Changed method of fileToByteArray" />
     <MESSAGE value="Removed some debug statements" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed some debug statements" />
+    <MESSAGE value="Fixed stereo file problem" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed stereo file problem" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -960,8 +963,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+        <state relative-caret-position="340">
+          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
