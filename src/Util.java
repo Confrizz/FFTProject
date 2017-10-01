@@ -49,14 +49,6 @@ public class Util {
             }
         }
 
-        int counter = 0;
-        for (int i = 0; i < doubleArray.length; i++) {
-            if (doubleArray[i] != 0) {
-                counter++;
-            }
-        }
-        System.out.println(counter);
-
         return doubleArray;
     }
 

@@ -34,14 +34,6 @@ public class FileFFT {
                 fftData[2 * i + 1] = 0;
             }
 
-            int zeroCount = 0;
-            for (int i = numOfSamples * k; i < numOfSamples * (k + 1); i++) {
-                if (data[i] == 0) {
-                    zeroCount++;
-                }
-            }
-            System.out.println(zeroCount);
-
             fft.complexForward(fftData);
             for (int i = 0; i < frequencyBands.length; i++) {
                 for (int j = 0; j < fftData.length; j += fftData.length / frequencyBands.length * i + 2) {
