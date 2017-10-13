@@ -8,7 +8,7 @@ public class FileFFT {
     private static int numOfSamples;
 
     private File file = null;
-    private double[] data;
+    private short[] data;
     private DoubleFFT_1D fft;
 
     public FileFFT(File file, int numOfSamples) throws IOException, UnsupportedAudioFileException {
@@ -21,7 +21,7 @@ public class FileFFT {
 
     private void init() throws IOException, UnsupportedAudioFileException {
         //TODO: Remove from init, in case we have more than one file NOTE: unless you want to make a new object every time
-        this.data = Util.toDoubleArray(Util.stereoByteArrayToMonoByteArray(Util.fileToByteArray(file)));
+        this.data = Util.toShortArray(Util.stereoByteArrayToMonoByteArray(Util.fileToByteArray(file)));
     }
 
     private void calculateFFT() throws IOException {
@@ -45,6 +45,10 @@ public class FileFFT {
             outputStream.write(Arrays.toString(frequencyBands));
             outputStream.newLine();
             outputStream.flush();
+
+            for (int i = 0; i < frequencyBands.length; i++) {
+                frequencyBands[i] = 0;
+            }
         }
         outputStream.close();
     }

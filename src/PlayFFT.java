@@ -7,10 +7,10 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class PlayFFT implements Runnable {
+public class PlayFFT {
     private File fftFile;
     private File audioFile;
-    private int numOfSamples = FileFFT.getNumOfSamples();
+    //   private int numOfSamples = FileFFT.getNumOfSamples();
     private boolean isReady = false;
 
     public PlayFFT(File audioFile, File fftFile) throws IOException, UnsupportedAudioFileException, InterruptedException, LineUnavailableException {
@@ -30,7 +30,9 @@ public class PlayFFT implements Runnable {
         int comma;
         int counter = 0;
 
-        run();
+        Clip clip = AudioSystem.getClip();
+        clip.open(AudioSystem.getAudioInputStream(audioFile));
+        clip.start();
 
         while ((line = bufferedReader.readLine()) != null) {
             this.isReady = true;
@@ -42,25 +44,10 @@ public class PlayFFT implements Runnable {
 //            System.out.println(bandOne + " " + bandTwo + " " + bandThree);
 //            Thread.sleep(8 * numOfSamples * numOfSamples / dataLength);
 //            Thread.sleep(numOfSamples * (dataLength / numOfSamples));
+            Thread.sleep(5);
 
             counter++;
         }
 
-    }
-
-    @Override
-    public void run() {
-        System.out.println("Again thread");
-        try {
-            Clip clip = AudioSystem.getClip();
-            clip.open(AudioSystem.getAudioInputStream(audioFile));
-            clip.start();
-        } catch (LineUnavailableException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (UnsupportedAudioFileException e) {
-            e.printStackTrace();
-        }
     }
 }
