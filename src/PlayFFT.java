@@ -33,6 +33,7 @@ public class PlayFFT {
         clip.open(AudioSystem.getAudioInputStream(audioFile));
         clip.start();
 
+        double sleepTime = ((double) numOfSamples / 44100) * 1000;
         while ((line = bufferedReader.readLine()) != null) {
             this.isReady = true;
 
@@ -41,7 +42,8 @@ public class PlayFFT {
             bandThree = Double.parseDouble(line.substring(comma + 1, line.indexOf("]")));
 
             System.out.println(bandOne + " " + bandTwo + " " + bandThree);
-            Thread.sleep((4 * 44100 * numOfSamples) / dataLength);
+
+            Thread.sleep((long) sleepTime);
         }
 
     }
