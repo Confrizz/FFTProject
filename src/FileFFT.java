@@ -14,13 +14,13 @@ public class FileFFT {
     public FileFFT(File file, int numOfSamples) throws IOException, UnsupportedAudioFileException {
         this.file = file;
         this.numOfSamples = numOfSamples;
-        //TODO: Move method statements to Main class
+        //Move method statements to Main class
         init();
         calculateFFT();
     }
 
     private void init() throws IOException, UnsupportedAudioFileException {
-        //TODO: Remove from init, in case we have more than one file NOTE: unless you want to make a new object every time
+        //Remove from init, in case we have more than one file NOTE: unless you want to make a new object every time
         this.data = Util.toShortArray(Util.stereoByteArrayToMonoByteArray(Util.fileToByteArray(file)));
     }
 
@@ -32,14 +32,14 @@ public class FileFFT {
         for (int k = 0; k < data.length / numOfSamples; k++) {
             for (int i = 0; i < numOfSamples; i++) {
                 int j = i;
-                fftData[2 * i] = (this.data[i + k * numOfSamples]) * 0.5 * (1.0 - Math.cos(2.0 * Math.PI * j / numOfSamples)) / Math.pow(10, 300); //Hann Window  * 0.5 * (1.0 - Math.cos(2.0 * Math.PI * j / numOfSamples))
+                fftData[2 * i] = (double) (this.data[i + k * numOfSamples]) * 0.5 * (1.0 - Math.cos(2.0 * Math.PI * j / numOfSamples)); //Hann Window  * 0.5 * (1.0 - Math.cos(2.0 * Math.PI * j / numOfSamples))
                 fftData[2 * i + 1] = 0;
             }
             fft.complexForward(fftData);
 
             for (int i = 0; i < frequencyBands.length; i++) {
-                for (int j = 0; j < fftData.length; j += fftData.length / frequencyBands.length * i + 2) {
-                    frequencyBands[i] += Math.sqrt(fftData[j] * fftData[j] + fftData[j + 1] * fftData[j + 1]) / 3;
+                for (int j = 0; j < fftData.length; j += (fftData.length / frequencyBands.length * i) + 2) {
+                    frequencyBands[i] += Math.sqrt(fftData[j] * fftData[j] + fftData[j + 1] * fftData[j + 1]) / (numOfSamples / (2 * frequencyBands.length));
                 }
             }
             outputStream.write(Arrays.toString(frequencyBands));

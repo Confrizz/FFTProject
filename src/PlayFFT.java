@@ -10,7 +10,7 @@ import java.io.IOException;
 public class PlayFFT {
     private File fftFile;
     private File audioFile;
-    //   private int numOfSamples = FileFFT.getNumOfSamples();
+    private int numOfSamples = FileFFT.getNumOfSamples();
     private boolean isReady = false;
 
     public PlayFFT(File audioFile, File fftFile) throws IOException, UnsupportedAudioFileException, InterruptedException, LineUnavailableException {
@@ -28,7 +28,6 @@ public class PlayFFT {
         String line;
         double bandOne, bandTwo, bandThree;
         int comma;
-        int counter = 0;
 
         Clip clip = AudioSystem.getClip();
         clip.open(AudioSystem.getAudioInputStream(audioFile));
@@ -41,12 +40,8 @@ public class PlayFFT {
             bandTwo = Double.parseDouble(line.substring(comma + 1, (comma = line.indexOf(",", comma + 1))));
             bandThree = Double.parseDouble(line.substring(comma + 1, line.indexOf("]")));
 
-//            System.out.println(bandOne + " " + bandTwo + " " + bandThree);
-//            Thread.sleep(8 * numOfSamples * numOfSamples / dataLength);
-//            Thread.sleep(numOfSamples * (dataLength / numOfSamples));
-            Thread.sleep(5);
-
-            counter++;
+            System.out.println(bandOne + " " + bandTwo + " " + bandThree);
+            Thread.sleep((4 * 44100 * numOfSamples) / dataLength);
         }
 
     }
