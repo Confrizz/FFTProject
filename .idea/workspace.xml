@@ -8,7 +8,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/FFT/Main.class" afterPath="$PROJECT_DIR$/out/production/FFT/Main.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/FFT/PlayFFT.class" afterPath="$PROJECT_DIR$/out/production/FFT/PlayFFT.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main.java" afterPath="$PROJECT_DIR$/src/Main.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -485,7 +484,14 @@
       <option name="project" value="LOCAL" />
       <updated>1507920158105</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Comments deleted">
+      <created>1512185521978</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1512185521978</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TodoView">
@@ -599,7 +605,8 @@
     <MESSAGE value="Fixed byteWrapper. Now wraps 16bit words (little-endian) to short. Problem remains with FFT values not printing" />
     <MESSAGE value="Fixes most problems. Still has problem of synchronization." />
     <MESSAGE value="Synchronization resolved." />
-    <option name="LAST_COMMIT_MESSAGE" value="Synchronization resolved." />
+    <MESSAGE value="Comments deleted" />
+    <option name="LAST_COMMIT_MESSAGE" value="Comments deleted" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
